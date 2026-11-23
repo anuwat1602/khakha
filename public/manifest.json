@@ -1,0 +1,47 @@
+{
+  "name": "ร้านข้าวขาหมูหวานละมุน 🌸 ขาหมูพาสเทลสูตรโบราณ",
+  "short_name": "ขาหมูหวานละมุน",
+  "description": "สั่งข้าวขาหมูพาสเทลสูตรโบราณ เคี่ยว 12 ชม. นุ่มละลายในปาก พร้อมติดตามสถานะออเดอร์และสแกนจ่าย PromptPay",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFDF9",
+  "theme_color": "#FF8FA3",
+  "lang": "th",
+  "dir": "ltr",
+  "categories": [
+    "food",
+    "lifestyle",
+    "shopping"
+  ],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "ระบบหลังร้าน (POS)",
+      "short_name": "หลังร้าน POS",
+      "description": "เปิดหน้าจัดการออเดอร์สำหรับครัวและผู้จัดการร้าน",
+      "url": "/admin.html",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

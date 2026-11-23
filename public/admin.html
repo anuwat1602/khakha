@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ระบบจัดการครัว & ร้านข้าวขาหมูพาสเทล 🌸 (Staff POS)</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍🍳</text></svg>">
-  
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍🍳</text></svg>">
+  <!-- PWA Manifest & Mobile App Icons -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FF8FA3">
+
+  <!-- รองรับการเปิดเต็มหน้าจอบน iOS (iPhone / iPad) -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ขาหมูหวานละมุน">
+  <link rel="apple-touch-icon" href="icon-192.png">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -34,27 +45,33 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Mali:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Mali:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
+
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="bg-[#FAF7F2] min-h-screen text-pastel-text flex flex-col font-sans">
 
   <!-- ================= 1. STAFF LOGIN SCREEN (แสดงเมื่อยังไม่ล็อกอิน) ================= -->
-  <div id="loginScreen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gradient-to-br from-pink-100 via-rose-50 to-amber-50">
-    <div class="w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl border-2 border-pink-100 space-y-6 relative overflow-hidden">
-      
+  <div id="loginScreen"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gradient-to-br from-pink-100 via-rose-50 to-amber-50">
+    <div
+      class="w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl border-2 border-pink-100 space-y-6 relative overflow-hidden">
+
       <!-- Top Decorative Accent -->
       <div class="absolute -top-12 -right-12 w-32 h-32 bg-pink-200/50 rounded-full blur-2xl"></div>
       <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-rose-200/40 rounded-full blur-2xl"></div>
 
       <!-- Mascot & Brand -->
       <div class="text-center relative">
-        <div class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-rose-300 via-pink-200 to-amber-100 flex items-center justify-center text-4xl mx-auto shadow-md mb-3 transform hover:scale-105 transition">
+        <div
+          class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-rose-300 via-pink-200 to-amber-100 flex items-center justify-center text-4xl mx-auto shadow-md mb-3 transform hover:scale-105 transition">
           🐷👨‍🍳
         </div>
         <h2 class="text-2xl font-bold font-cute text-stone-800">
@@ -67,14 +84,16 @@
           <span class="badge-pastel badge-butter text-[11px]">
             🔒 เฉพาะพนักงานที่มีสิทธิ์เท่านั้น
           </span>
-          <div id="serverStatusBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
+          <div id="serverStatusBadge"
+            class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
             <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> กำลังตรวจเช็คเซิร์ฟเวอร์...
           </div>
         </div>
       </div>
 
       <!-- Error Alert -->
-      <div id="loginErrorAlert" class="hidden p-3 rounded-2xl bg-rose-50 border border-rose-200 text-rose-600 text-xs flex items-center gap-2">
+      <div id="loginErrorAlert"
+        class="hidden p-3 rounded-2xl bg-rose-50 border border-rose-200 text-rose-600 text-xs flex items-center gap-2">
         <i class="fa-solid fa-circle-exclamation text-base"></i>
         <span id="loginErrorMsg">ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</span>
       </div>
@@ -96,13 +115,15 @@
             <i class="fa-solid fa-lock absolute left-3.5 top-3 text-rose-300 text-sm"></i>
             <input type="password" id="loginPassword" required placeholder="••••••••"
               class="w-full pl-10 pr-10 py-2.5 rounded-xl border border-pink-200 focus:border-rose-400 focus:outline-none bg-stone-50/50 text-stone-800 transition">
-            <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-2.5 text-stone-400 hover:text-rose-500">
+            <button type="button" onclick="togglePasswordVisibility()"
+              class="absolute right-3 top-2.5 text-stone-400 hover:text-rose-500">
               <i id="eyeIcon" class="fa-solid fa-eye text-xs"></i>
             </button>
           </div>
         </div>
 
-        <button type="submit" id="btnLoginSubmit" class="w-full btn-pastel-primary py-3 text-sm font-bold tracking-wide shadow-lg">
+        <button type="submit" id="btnLoginSubmit"
+          class="w-full btn-pastel-primary py-3 text-sm font-bold tracking-wide shadow-lg">
           <i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบพนักงาน
         </button>
       </form>
@@ -111,15 +132,18 @@
       <div class="pt-2 border-t border-pink-100">
         <div class="text-[11px] font-semibold text-stone-500 mb-2 text-center">คลิกเพื่อเลือกบัญชีพนักงานทดสอบ:</div>
         <div class="grid grid-cols-3 gap-1.5 text-[10px]">
-          <button type="button" onclick="fillTestAccount('admin', 'khamoo888')" class="p-2 rounded-xl bg-pink-50 hover:bg-pink-100 border border-pink-200 text-rose-700 text-center transition">
+          <button type="button" onclick="fillTestAccount('admin', 'khamoo888')"
+            class="p-2 rounded-xl bg-pink-50 hover:bg-pink-100 border border-pink-200 text-rose-700 text-center transition">
             <div class="font-bold">👑 ผู้จัดการ</div>
             <div class="text-[9px] text-stone-400">admin</div>
           </button>
-          <button type="button" onclick="fillTestAccount('cashier01', '1234')" class="p-2 rounded-xl bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 text-center transition">
+          <button type="button" onclick="fillTestAccount('cashier01', '1234')"
+            class="p-2 rounded-xl bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 text-center transition">
             <div class="font-bold">🎀 แคชเชียร์</div>
             <div class="text-[9px] text-stone-400">cashier01</div>
           </button>
-          <button type="button" onclick="fillTestAccount('chef01', '1234')" class="p-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 text-center transition">
+          <button type="button" onclick="fillTestAccount('chef01', '1234')"
+            class="p-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 text-center transition">
             <div class="font-bold">👨‍🍳 หัวหน้าครัว</div>
             <div class="text-[9px] text-stone-400">chef01</div>
           </button>
@@ -142,13 +166,15 @@
     <!-- Admin Top Bar -->
     <header class="glass-header sticky top-0 z-30 px-4 lg:px-8 py-3 border-b border-pink-200">
       <div class="max-w-7xl mx-auto flex items-center justify-between">
-        
+
         <div class="flex items-center gap-3">
-          <a href="index.html" class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-300 to-rose-300 flex items-center justify-center text-xl shadow-sm hover:scale-105 transition">
+          <a href="index.html"
+            class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-pink-300 to-rose-300 flex items-center justify-center text-xl shadow-sm hover:scale-105 transition">
             🐷
           </a>
           <div>
-            <h1 class="text-lg md:text-xl font-bold font-cute bg-gradient-to-r from-rose-500 to-pink-600 bg-clip-text text-transparent flex items-center gap-2">
+            <h1
+              class="text-lg md:text-xl font-bold font-cute bg-gradient-to-r from-rose-500 to-pink-600 bg-clip-text text-transparent flex items-center gap-2">
               <span>ระบบครัว & จัดการหลังร้าน</span>
               <span class="badge-pastel badge-butter text-[11px]">POS & Kitchen</span>
             </h1>
@@ -158,9 +184,10 @@
 
         <!-- Staff Profile & Quick Actions -->
         <div class="flex items-center gap-3 text-xs">
-          
+
           <!-- Staff Profile Badge -->
-          <div class="hidden sm:flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-pink-200 shadow-sm">
+          <div
+            class="hidden sm:flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-pink-200 shadow-sm">
             <div id="staffAvatar" class="w-6 h-6 rounded-full bg-pink-100 flex items-center justify-center text-xs">
               🌸
             </div>
@@ -171,19 +198,22 @@
           </div>
 
           <!-- Alert Sound Toggle -->
-          <button onclick="toggleSoundAlert()" id="soundAlertBtn" class="btn-pastel-secondary py-1.5 px-3 flex items-center gap-1.5">
+          <button onclick="toggleSoundAlert()" id="soundAlertBtn"
+            class="btn-pastel-secondary py-1.5 px-3 flex items-center gap-1.5">
             <i class="fa-solid fa-bell text-rose-500"></i>
             <span id="soundAlertText">เสียงแจ้งเตือน: เปิด</span>
           </button>
 
           <!-- Refresh -->
-          <button onclick="fetchOrders(); fetchStats();" class="btn-pastel-primary py-1.5 px-3 flex items-center gap-1.5">
+          <button onclick="fetchOrders(); fetchStats();"
+            class="btn-pastel-primary py-1.5 px-3 flex items-center gap-1.5">
             <i class="fa-solid fa-arrows-rotate"></i>
             <span>รีเฟรช</span>
           </button>
 
           <!-- Logout Button -->
-          <button onclick="handleStaffLogout()" class="bg-rose-100 hover:bg-rose-200 text-rose-700 py-1.5 px-3 rounded-full font-medium transition flex items-center gap-1.5">
+          <button onclick="handleStaffLogout()"
+            class="bg-rose-100 hover:bg-rose-200 text-rose-700 py-1.5 px-3 rounded-full font-medium transition flex items-center gap-1.5">
             <i class="fa-solid fa-right-from-bracket"></i>
             <span>ออกจากระบบ</span>
           </button>
@@ -253,12 +283,14 @@
 
       <!-- TAB 1: ORDERS DASHBOARD -->
       <section id="tab-orders" class="space-y-4">
-        
+
         <!-- Filter Toolbar -->
-        <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-3.5 rounded-2xl border border-pink-100 shadow-sm text-xs">
+        <div
+          class="flex flex-wrap items-center justify-between gap-3 bg-white p-3.5 rounded-2xl border border-pink-100 shadow-sm text-xs">
           <div class="flex items-center gap-2">
             <span class="font-bold text-stone-600">กรองสถานะ:</span>
-            <select id="orderStatusFilter" onchange="fetchOrders()" class="px-3 py-1.5 rounded-xl border border-stone-200 focus:outline-none focus:border-rose-400 bg-stone-50">
+            <select id="orderStatusFilter" onchange="fetchOrders()"
+              class="px-3 py-1.5 rounded-xl border border-stone-200 focus:outline-none focus:border-rose-400 bg-stone-50">
               <option value="all">ทั้งหมด ทุกสถานะ</option>
               <option value="pending">รอเริ่มปรุง (Pending)</option>
               <option value="cooking">กำลังปรุง (Cooking)</option>
@@ -269,7 +301,8 @@
           </div>
 
           <div class="text-stone-400">
-            อัปเดตอัตโนมัติทุก 10 วินาที • มีคำสั่งซื้อในระบบ <span id="ordersListCount" class="font-bold text-rose-600">0</span> รายการ
+            อัปเดตอัตโนมัติทุก 10 วินาที • มีคำสั่งซื้อในระบบ <span id="ordersListCount"
+              class="font-bold text-rose-600">0</span> รายการ
           </div>
         </div>
 
@@ -295,7 +328,8 @@
         <div class="bg-white rounded-2xl border border-pink-100 shadow-sm overflow-hidden">
           <div class="overflow-x-auto">
             <table class="w-full text-left text-xs">
-              <thead class="bg-pink-50/60 text-stone-600 border-b border-pink-100 uppercase tracking-wider font-semibold">
+              <thead
+                class="bg-pink-50/60 text-stone-600 border-b border-pink-100 uppercase tracking-wider font-semibold">
                 <tr>
                   <th class="p-3.5">เมนู</th>
                   <th class="p-3.5">หมวดหมู่</th>
@@ -331,7 +365,8 @@
   <div id="menuItemModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
     <div class="modal-backdrop fixed inset-0" onclick="closeMenuModal()"></div>
     <div class="modal-content relative z-10 w-full max-w-lg p-6 max-h-[90vh] overflow-y-auto">
-      <button onclick="closeMenuModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-600">
+      <button onclick="closeMenuModal()"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-600">
         <i class="fa-solid fa-xmark"></i>
       </button>
 
@@ -342,13 +377,14 @@
 
         <div>
           <label class="block font-semibold text-stone-700 mb-1">ชื่อเมนู *</label>
-          <input type="text" id="menuFormName" required placeholder="เช่น ข้าวขาหมูพริกไทยดำ" 
+          <input type="text" id="menuFormName" required placeholder="เช่น ข้าวขาหมูพริกไทยดำ"
             class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none">
         </div>
 
         <div>
           <label class="block font-semibold text-stone-700 mb-1">หมวดหมู่อาหาร *</label>
-          <select id="menuFormCategory" required class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none bg-white">
+          <select id="menuFormCategory" required
+            class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none bg-white">
             <!-- Render Categories -->
           </select>
         </div>
@@ -356,31 +392,31 @@
         <div class="grid grid-cols-2 gap-3">
           <div>
             <label class="block font-semibold text-stone-700 mb-1">ราคาปกติ (บาท) *</label>
-            <input type="number" id="menuFormPrice" step="1" required placeholder="65" 
+            <input type="number" id="menuFormPrice" step="1" required placeholder="65"
               class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none">
           </div>
           <div>
             <label class="block font-semibold text-stone-700 mb-1">ราคาพิเศษ (บาท)</label>
-            <input type="number" id="menuFormPriceSpecial" step="1" placeholder="75 (เว้นว่างได้)" 
+            <input type="number" id="menuFormPriceSpecial" step="1" placeholder="75 (เว้นว่างได้)"
               class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none">
           </div>
         </div>
 
         <div>
           <label class="block font-semibold text-stone-700 mb-1">คำอธิบายความอร่อย</label>
-          <textarea id="menuFormDesc" rows="2" placeholder="อธิบายรสชาติหรือวัตถุดิบเด่น..." 
+          <textarea id="menuFormDesc" rows="2" placeholder="อธิบายรสชาติหรือวัตถุดิบเด่น..."
             class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none"></textarea>
         </div>
 
         <div>
           <label class="block font-semibold text-stone-700 mb-1">ลิงก์รูปภาพ (URL)</label>
-          <input type="url" id="menuFormImage" placeholder="https://..." 
+          <input type="url" id="menuFormImage" placeholder="https://..."
             class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none">
         </div>
 
         <div>
           <label class="block font-semibold text-stone-700 mb-1">ป้ายกำกับพิเศษ (Badge)</label>
-          <input type="text" id="menuFormBadge" placeholder="เช่น แนะนำ 🌟, ยอดฮิต 💖" 
+          <input type="text" id="menuFormBadge" placeholder="เช่น แนะนำ 🌟, ยอดฮิต 💖"
             class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none">
         </div>
 
@@ -413,4 +449,5 @@
   <!-- Admin Script -->
   <script src="admin.js"></script>
 </body>
+
 </html>
