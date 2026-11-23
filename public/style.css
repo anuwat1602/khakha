@@ -1,0 +1,264 @@
+/* =========================================================
+   🌸 ธีมสีพาสเทล ร้านข้าวขาหมูหวานละมุน (Wan Lamun Pastel CSS)
+   ========================================================= */
+
+:root {
+  --bg-main: #FFFDF9;
+  --bg-card: #FFFFFF;
+  --pastel-pink: #FFCCD5;
+  --pastel-pink-deep: #FF8FA3;
+  --pastel-peach: #FFE5D9;
+  --pastel-peach-deep: #F4A261;
+  --pastel-mint: #D8F3DC;
+  --pastel-mint-deep: #74C69D;
+  --pastel-lavender: #E8EAFF;
+  --pastel-lavender-deep: #9D96E8;
+  --pastel-butter: #FFF3B0;
+  --pastel-caramel: #C89666;
+  --pastel-caramel-deep: #8D5B4C;
+  --text-primary: #382C2C;
+  --text-muted: #7E7070;
+  --border-soft: #F0E6E1;
+  --shadow-pastel: 0 10px 25px -4px rgba(255, 182, 193, 0.25);
+  --shadow-card: 0 8px 20px -3px rgba(180, 140, 130, 0.08);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Kanit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-cute {
+  font-family: 'Mali', cursive, sans-serif;
+}
+
+/* Glassmorphism Header */
+.glass-header {
+  background: rgba(255, 253, 249, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--border-soft);
+}
+
+/* Pastel Badge Pill */
+.badge-pastel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.825rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.badge-pink {
+  background-color: var(--pastel-pink);
+  color: #8A2846;
+}
+
+.badge-mint {
+  background-color: var(--pastel-mint);
+  color: #1E6B4A;
+}
+
+.badge-butter {
+  background-color: var(--pastel-butter);
+  color: #8C6A15;
+}
+
+.badge-lavender {
+  background-color: var(--pastel-lavender);
+  color: #4B449A;
+}
+
+/* Category Filter Tabs */
+.category-btn {
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-soft);
+  color: var(--text-primary);
+  border-radius: 9999px;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+.category-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--pastel-pink-deep);
+  box-shadow: 0 6px 16px rgba(255, 143, 163, 0.2);
+}
+
+.category-btn.active {
+  background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(255, 154, 158, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Food Menu Card */
+.menu-card {
+  background: #FFFFFF;
+  border-radius: 1.5rem;
+  border: 1.5px solid var(--border-soft);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--pastel-pink);
+  box-shadow: var(--shadow-pastel);
+}
+
+.menu-card-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  background-color: var(--pastel-peach);
+}
+
+.menu-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.menu-card:hover .menu-card-img {
+  transform: scale(1.06);
+}
+
+/* Pastel Buttons */
+.btn-pastel-primary {
+  background: linear-gradient(135deg, #FF8FA3 0%, #FFB7B2 100%);
+  color: #FFFFFF;
+  font-weight: 500;
+  border-radius: 9999px;
+  padding: 0.65rem 1.35rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(255, 143, 163, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-pastel-primary:hover {
+  background: linear-gradient(135deg, #FB6F92 0%, #FF8FA3 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 143, 163, 0.5);
+}
+
+.btn-pastel-secondary {
+  background: #FFF5F7;
+  color: #D94668;
+  border: 1.5px solid #FFD3DD;
+  font-weight: 500;
+  border-radius: 9999px;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.btn-pastel-secondary:hover {
+  background: #FFE8ED;
+  transform: translateY(-1px);
+}
+
+.btn-pastel-mint {
+  background: linear-gradient(135deg, #74C69D 0%, #B7E4C7 100%);
+  color: #164E33;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.65rem 1.35rem;
+  box-shadow: 0 4px 14px rgba(116, 198, 157, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-pastel-mint:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(116, 198, 157, 0.5);
+}
+
+/* Floating Cart Badge */
+.floating-cart-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(135deg, #FF6B8B 0%, #FF8FA3 100%);
+  color: white;
+  padding: 0.9rem 1.6rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px rgba(255, 107, 139, 0.45);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 40;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.floating-cart-btn:hover {
+  transform: scale(1.06) translateY(-4px);
+  box-shadow: 0 14px 35px rgba(255, 107, 139, 0.55);
+}
+
+/* Modal Animations */
+.modal-backdrop {
+  background-color: rgba(56, 44, 44, 0.45);
+  backdrop-filter: blur(6px);
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  background: #FFFDF9;
+  border-radius: 2rem;
+  border: 2px solid var(--border-soft);
+  box-shadow: 0 25px 50px -12px rgba(180, 140, 130, 0.25);
+  animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalPop {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Cute Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF5EB;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFCAD4;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF9AA2;
+}
+
+/* Pulse animation for ready status */
+@keyframes cuteBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.cute-bounce {
+  animation: cuteBounce 2s infinite ease-in-out;
+}

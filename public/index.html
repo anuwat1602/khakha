@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ร้านข้าวขาหมูหวานละมุน 🌸 ขาหมูพาสเทลสูตรโบราณ</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍲</text></svg>">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pastel: {
+              pink: '#FFCCD5',
+              'pink-deep': '#FF8FA3',
+              peach: '#FFE5D9',
+              mint: '#D8F3DC',
+              'mint-deep': '#74C69D',
+              lavender: '#E8EAFF',
+              butter: '#FFF3B0',
+              cream: '#FFFDF9',
+              caramel: '#C89666',
+              text: '#382C2C',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Mali:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Pastel Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-pastel-cream min-h-screen flex flex-col text-pastel-text">
+
+  <!-- Top Announcement Bar -->
+  <div
+    class="bg-gradient-to-r from-pink-200 via-purple-100 to-amber-100 py-2 px-4 text-center text-xs md:text-sm font-medium text-pink-800 flex items-center justify-center gap-2 shadow-sm">
+    <span class="inline-block animate-pulse">🌸</span>
+    <span>ยินดีต้อนรับสู่ร้านข้าวขาหมูพาสเทล <b>"หวานละมุน"</b> • เคี่ยวสูตรโบราณ 12 ชม. นุ่มละลายในปาก</span>
+    <span class="inline-block animate-pulse">🌸</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="glass-header sticky top-0 z-30 px-4 lg:px-8 py-3.5 transition-all duration-200">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div
+          class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-300 to-rose-200 flex items-center justify-center text-2xl shadow-md group-hover:scale-105 transition-transform">
+          🐷
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1
+              class="text-xl md:text-2xl font-bold font-cute tracking-wide bg-gradient-to-r from-rose-500 to-pink-600 bg-clip-text text-transparent">
+              ขาหมูหวานละมุน
+            </h1>
+            <span class="badge-pastel badge-mint text-xs">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> เปิดบริการ
+            </span>
+          </div>
+          <p class="text-xs text-stone-500 font-light">Wan Lamun Stewed Pork Leg & Pastel Cafe</p>
+        </div>
+      </a>
+
+      <!-- Quick Actions -->
+      <div class="flex items-center gap-3">
+        <!-- Order Tracking Button -->
+        <button onclick="openTrackerModal()" class="btn-pastel-secondary text-xs md:text-sm flex items-center gap-2">
+          <i class="fa-solid fa-receipt text-rose-400"></i>
+          <span>ติดตามออเดอร์</span>
+        </button>
+
+        <!-- Admin / Kitchen POS Link -->
+        <a href="admin.html" class="btn-pastel-secondary text-xs md:text-sm flex items-center gap-2 hidden sm:flex">
+          <i class="fa-solid fa-utensils text-rose-400"></i>
+          <span>ระบบหลังร้าน (POS)</span>
+        </a>
+
+        <!-- Cart Trigger Button -->
+        <button onclick="openCartDrawer()"
+          class="relative p-2.5 rounded-full bg-pink-100 hover:bg-pink-200 text-rose-600 transition-all shadow-sm">
+          <i class="fa-solid fa-basket-shopping text-lg"></i>
+          <span id="headerCartCount"
+            class="absolute -top-1 -right-1 w-5 h-5 bg-rose-500 text-white rounded-full text-xs font-bold flex items-center justify-center hidden">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section
+    class="relative overflow-hidden py-8 md:py-14 px-4 bg-gradient-to-b from-pink-50 via-rose-50/40 to-transparent">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+
+      <div class="md:col-span-7 space-y-4 text-center md:text-left">
+        <div
+          class="inline-flex items-center gap-2 bg-pink-100/80 text-rose-700 px-4 py-1.5 rounded-full text-xs md:text-sm font-medium">
+          <i class="fa-solid fa-sparkles text-amber-500"></i>
+          สูตรลับพะโล้เข้มข้น หอมเครื่องเทศยาจีน 12 ชั่วโมง
+        </div>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-stone-800 leading-tight">
+          ขาหมูนุ่มละมุนลิ้น<br>
+          <span class="text-rose-500 font-cute inline-block mt-[35px]">หวานฉ่ำ เด้งดึ๋ง สูตรต้นตําหรับ</span>
+        </h2>
+        <p class="text-stone-600 text-sm md:text-base max-w-xl font-light">
+          คัดสรรขาหมูสดคุณภาพดี เคี่ยวไฟอ่อนด้วยโป๊ยกั๊ก อบเชย และสมุนไพรจีนแท้ หนังนุ่มละลายในปาก คากิเอ็นแก้วดึ๋งดั๋ง
+          พร้อมไข่ยางมะตูมเยิ้มๆ และน้ำส้มพริกดองสูตรเด็ด
+        </p>
+
+        <!-- Search Bar -->
+        <div class="pt-2 max-w-lg mx-auto md:mx-0">
+          <div class="relative flex items-center">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 text-rose-300 text-lg"></i>
+            <input type="text" id="searchInput" placeholder="ค้นหาเมนูอร่อย เช่น ข้าวขาหมู, คากิ, ต้มมะระ..."
+              class="w-full pl-12 pr-28 py-3.5 rounded-full border-2 border-pink-200 focus:border-rose-400 focus:outline-none bg-white shadow-sm text-sm placeholder-stone-400 transition-all">
+            <button onclick="performSearch()"
+              class="absolute right-2 btn-pastel-primary py-2 px-5 text-xs font-semibold">
+              ค้นหา
+            </button>
+          </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-xs text-stone-500">
+          <div class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i>
+            ทำสดใหม่ทุกวัน</div>
+          <div class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> สะอาด ปลอดภัย
+            100%</div>
+          <div class="flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> สแกนจ่าย
+            PromptPay สะดวก</div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div class="md:col-span-5 relative flex justify-center">
+        <div
+          class="relative w-72 h-72 md:w-88 md:h-88 rounded-3xl p-3 bg-gradient-to-tr from-pink-200 via-rose-100 to-amber-100 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-300">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=700&auto=format&fit=crop&q=80"
+            alt="ข้าวขาหมูซิกเนเจอร์" class="w-full h-full object-cover rounded-2xl shadow-inner">
+          <div
+            class="absolute -bottom-4 -left-4 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-pink-100 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-pink-100 text-rose-500 flex items-center justify-center text-xl">
+              ⭐
+            </div>
+            <div>
+              <p class="text-xs font-bold text-stone-800">การันตีความอร่อย</p>
+              <p class="text-xs text-stone-500">คะแนนรีวิวเฉลี่ย 4.9 / 5.0 💖</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Category Filter Section -->
+  <section class="max-w-7xl mx-auto px-4 py-4 w-full">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-xl font-bold text-stone-800 flex items-center gap-2">
+        <span>🍲</span> เมนูความอร่อย
+      </h3>
+      <span id="menuCountBadge" class="text-xs bg-rose-100 text-rose-700 px-3 py-1 rounded-full font-medium">
+        กำลังโหลด...
+      </span>
+    </div>
+
+    <!-- Category Pills -->
+    <div class="flex items-center gap-2.5 overflow-x-auto pb-2 scrollbar-none" id="categoryTabs">
+      <button class="category-btn active" data-category="all" onclick="selectCategory('all', this)">
+        <span>✨</span> ทั้งหมด
+      </button>
+      <!-- หมวดหมู่จะถูกโหลดจาก API เข้ามาที่นี่ -->
+    </div>
+  </section>
+
+  <!-- Menu Grid Section -->
+  <main class="max-w-7xl mx-auto px-4 py-6 flex-1 w-full">
+    <div id="menuGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- Loading Skeleton -->
+      <div class="col-span-full py-20 text-center text-stone-400">
+        <i class="fa-solid fa-spinner fa-spin text-3xl text-rose-400 mb-3"></i>
+        <p>กำลังเตรียมความอร่อยสีพาสเทล...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Customer Reviews Section -->
+  <section
+    class="bg-gradient-to-b from-transparent via-rose-50/50 to-pink-50/80 py-12 px-4 mt-12 border-t border-pink-100">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-8">
+        <div class="badge-pastel badge-pink mb-2">เสียงตอบรับจากลูกค้า</div>
+        <h3 class="text-2xl md:text-3xl font-bold font-cute text-stone-800">
+          ความประทับใจจากสายชิมขาหมู 🌸
+        </h3>
+        <p class="text-sm text-stone-500">ความสุขของลูกค้าคือพลังในการเคี่ยวขาหมูของเรา</p>
+      </div>
+
+      <!-- Reviews Carousel / Grid -->
+      <div id="reviewsList" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- โหลดจาก API -->
+      </div>
+
+      <!-- Write Review Button -->
+      <div class="text-center">
+        <button onclick="openReviewModal()" class="btn-pastel-secondary text-sm">
+          <i class="fa-regular fa-comment-dots"></i> เขียนรีวิวให้ร้านหวานละมุน
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-stone-100 py-8 px-4 text-center text-xs text-stone-500 space-y-2">
+    <div class="flex items-center justify-center gap-2 font-cute text-base text-rose-500">
+      <span>🐷</span> ร้านข้าวขาหมูพาสเทล "หวานละมุน"
+    </div>
+    <p>เปิดบริการทุกวัน 08:30 - 20:30 น. • โทรสั่งอาหาร: 089-123-4567</p>
+    <p class="text-stone-400">สร้างด้วยความรักและพะโล้เข้มข้น • ฐานข้อมูล SQLite ในตัว</p>
+    <div class="pt-2">
+      <a href="admin.html" class="text-rose-400 hover:underline">หน้าระบบครัว & ผู้จัดการร้าน (Kitchen POS)</a>
+    </div>
+  </footer>
+
+  <!-- ================= FLOATING CART BUTTON ================= -->
+  <div id="floatingCart" onclick="openCartDrawer()" class="floating-cart-btn hidden">
+    <div class="relative">
+      <i class="fa-solid fa-bowl-food text-2xl"></i>
+      <span id="floatingCartBadge"
+        class="absolute -top-2 -right-2 bg-white text-rose-600 rounded-full w-5 h-5 text-xs font-black flex items-center justify-center shadow">
+        0
+      </span>
+    </div>
+    <div class="text-left font-sans">
+      <div class="text-xs opacity-90">ตะกร้าของคุณ</div>
+      <div class="text-sm font-bold" id="floatingCartTotal">฿0</div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: CUSTOMIZE FOOD ITEM ================= -->
+  <div id="foodModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div class="modal-backdrop fixed inset-0" onclick="closeFoodModal()"></div>
+
+    <div class="modal-content relative z-10 w-full max-w-lg max-h-[90vh] overflow-y-auto p-6">
+      <button onclick="closeFoodModal()"
+        class="absolute top-4 right-4 w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex gap-4 items-start mb-4">
+        <img id="modalItemImg" src="" alt="" class="w-24 h-24 rounded-2xl object-cover shadow-sm bg-pink-100">
+        <div>
+          <div id="modalItemBadge" class="mb-1"></div>
+          <h3 id="modalItemName" class="text-lg font-bold text-stone-800"></h3>
+          <p id="modalItemDesc" class="text-xs text-stone-500 mt-1 line-clamp-2"></p>
+          <div class="text-rose-600 font-bold text-lg mt-1" id="modalItemBasePrice"></div>
+        </div>
+      </div>
+
+      <hr class="border-pink-100 my-4">
+
+      <!-- Options Form -->
+      <form id="foodOptionForm" onsubmit="confirmAddToCart(event)" class="space-y-4 text-sm">
+        <input type="hidden" id="modalItemId">
+
+        <!-- Option: ขนาด (ธรรมดา / พิเศษ) -->
+        <div id="sizeOptionSection">
+          <label class="block font-semibold text-stone-700 mb-2">✨ ขนาดความอร่อย</label>
+          <div class="grid grid-cols-2 gap-3">
+            <label
+              class="flex items-center justify-between p-3 rounded-xl border border-stone-200 cursor-pointer hover:border-pink-300 has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50/50">
+              <div class="flex items-center gap-2">
+                <input type="radio" name="opt_size" value="normal" checked onchange="updateModalCalculatedPrice()"
+                  class="text-rose-500 focus:ring-rose-400">
+                <span>ธรรมดา</span>
+              </div>
+              <span id="modalSizeNormalPrice" class="font-bold text-rose-500"></span>
+            </label>
+            <label id="specialSizeLabel"
+              class="flex items-center justify-between p-3 rounded-xl border border-stone-200 cursor-pointer hover:border-pink-300 has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50/50">
+              <div class="flex items-center gap-2">
+                <input type="radio" name="opt_size" value="special" onchange="updateModalCalculatedPrice()"
+                  class="text-rose-500 focus:ring-rose-400">
+                <span>พิเศษ จุใจ</span>
+              </div>
+              <span id="modalSizeSpecialPrice" class="font-bold text-rose-500"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Option: เลือกประเภทเนื้อหมู (สำหรับหมวดข้าวขาหมู) -->
+        <div id="porkPrefSection">
+          <label class="block font-semibold text-stone-700 mb-2">🐷 ความชอบเนื้อหมู</label>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <label
+              class="text-center p-2 rounded-xl border border-stone-200 cursor-pointer hover:border-pink-300 has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50/50">
+              <input type="radio" name="opt_pork" value="เนื้อหนัง" checked class="hidden">
+              <span class="block text-xs font-medium">เนื้อ + หนัง</span>
+            </label>
+            <label
+              class="text-center p-2 rounded-xl border border-stone-200 cursor-pointer hover:border-pink-300 has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50/50">
+              <input type="radio" name="opt_pork" value="เนื้อล้วน" class="hidden">
+              <span class="block text-xs font-medium">เนื้อล้วน</span>
+            </label>
+            <label
+              class="text-center p-2 rounded-xl border border-stone-200 cursor-pointer hover:border-pink-300 has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50/50">
+              <input type="radio" name="opt_pork" value="หนังล้วน" class="hidden">
+              <span class="block text-xs font-medium">หนังล้วน</span>
+            </label>
+            <label
+              class="text-center p-2 rounded-xl border border-stone-200 cursor-pointer hover:border-pink-300 has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50/50">
+              <input type="radio" name="opt_pork" value="คากิ" class="hidden">
+              <span class="block text-xs font-medium">เน้นคากิ</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Extra Toppings -->
+        <div id="extraToppingSection">
+          <label class="block font-semibold text-stone-700 mb-2">🥚 ท็อปปิ้งเพิ่มความฟิน</label>
+          <div class="space-y-2">
+            <label
+              class="flex items-center justify-between p-2.5 rounded-xl border border-stone-100 hover:bg-stone-50 cursor-pointer">
+              <div class="flex items-center gap-2">
+                <input type="checkbox" name="opt_extra" value="ไข่พะโล้ยางมะตูม" data-price="15"
+                  onchange="updateModalCalculatedPrice()" class="rounded text-rose-500 focus:ring-rose-400">
+                <span>เพิ่มไข่พะโล้ยางมะตูม (+฿15)</span>
+              </div>
+              <span class="text-xs text-stone-400">เยิ้มๆ</span>
+            </label>
+            <label
+              class="flex items-center justify-between p-2.5 rounded-xl border border-stone-100 hover:bg-stone-50 cursor-pointer">
+              <div class="flex items-center gap-2">
+                <input type="checkbox" name="opt_extra" value="ไส้พะโล้ตุ๋น" data-price="25"
+                  onchange="updateModalCalculatedPrice()" class="rounded text-rose-500 focus:ring-rose-400">
+                <span>เพิ่มไส้พะโล้ตุ๋น (+฿25)</span>
+              </div>
+              <span class="text-xs text-stone-400">นุ่มสะอาด</span>
+            </label>
+            <label
+              class="flex items-center justify-between p-2.5 rounded-xl border border-stone-100 hover:bg-stone-50 cursor-pointer">
+              <div class="flex items-center gap-2">
+                <input type="checkbox" name="opt_extra" value="ผักกาดดองต้มพิเศษ" data-price="10"
+                  onchange="updateModalCalculatedPrice()" class="rounded text-rose-500 focus:ring-rose-400">
+                <span>เพิ่มผักกาดดองต้ม (+฿10)</span>
+              </div>
+              <span class="text-xs text-stone-400">ตัดเลี่ยน</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Special Notes -->
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1">📝 ข้อความถึงพ่อครัว</label>
+          <input type="text" id="modalSpecialNotes" placeholder="เช่น น้ำราดเยอะๆ, ไม่ใส่กระเทียม, หวานน้อย..."
+            class="w-full px-3.5 py-2.5 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none text-xs">
+        </div>
+
+        <!-- Quantity & Add Button -->
+        <div class="pt-3 flex items-center justify-between gap-4">
+          <div class="flex items-center border border-pink-200 rounded-full bg-white p-1">
+            <button type="button" onclick="adjustModalQty(-1)"
+              class="w-8 h-8 rounded-full bg-pink-100 text-rose-600 font-bold hover:bg-pink-200 flex items-center justify-center">-</button>
+            <span id="modalQtyDisplay" class="w-10 text-center font-bold text-stone-800">1</span>
+            <button type="button" onclick="adjustModalQty(1)"
+              class="w-8 h-8 rounded-full bg-pink-100 text-rose-600 font-bold hover:bg-pink-200 flex items-center justify-center">+</button>
+          </div>
+
+          <button type="submit" class="btn-pastel-primary flex-1 py-3 text-sm">
+            <span>ใส่ตะกร้า</span>
+            <span id="modalTotalPriceDisplay" class="font-bold"></span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= DRAWER: CART & CHECKOUT ================= -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+    <div class="modal-backdrop fixed inset-0" onclick="closeCartDrawer()"></div>
+
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-pastel-cream shadow-2xl flex flex-col border-l border-pink-100">
+
+        <!-- Cart Header -->
+        <div class="p-5 bg-white border-b border-pink-100 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🛍️</span>
+            <h3 class="font-bold text-lg text-stone-800 font-cute">ตะกร้าความอร่อย</h3>
+          </div>
+          <button onclick="closeCartDrawer()"
+            class="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-600">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-4 space-y-3">
+          <!-- โหลดรายการในตะกร้า -->
+        </div>
+
+        <!-- Cart Footer & Checkout Form -->
+        <div class="p-5 bg-white border-t border-pink-100 space-y-4">
+
+          <!-- Order Type Selector -->
+          <div>
+            <label class="block text-xs font-semibold text-stone-600 mb-1.5">ประเภทการสั่ง</label>
+            <div class="grid grid-cols-3 gap-2 text-xs">
+              <label
+                class="text-center p-2 rounded-xl border border-stone-200 cursor-pointer has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50">
+                <input type="radio" name="order_type" value="dine-in" checked onchange="toggleOrderTypeInputs()"
+                  class="hidden">
+                <span class="block">🍽️ ทานที่ร้าน</span>
+              </label>
+              <label
+                class="text-center p-2 rounded-xl border border-stone-200 cursor-pointer has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50">
+                <input type="radio" name="order_type" value="takeaway" onchange="toggleOrderTypeInputs()"
+                  class="hidden">
+                <span class="block">🥡 กลับบ้าน</span>
+              </label>
+              <label
+                class="text-center p-2 rounded-xl border border-stone-200 cursor-pointer has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50">
+                <input type="radio" name="order_type" value="delivery" onchange="toggleOrderTypeInputs()"
+                  class="hidden">
+                <span class="block">🛵 เดลิเวอรี่</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Dynamic Input (Table / Address) -->
+          <div id="tableInputGroup">
+            <label class="block text-xs font-semibold text-stone-600 mb-1">หมายเลขโต๊ะ *</label>
+            <input type="text" id="orderTableNo" placeholder="เช่น โต๊ะ 5 หรือ A1"
+              class="w-full px-3 py-2 rounded-xl border border-stone-200 text-xs focus:border-rose-400 focus:outline-none">
+          </div>
+
+          <div id="addressInputGroup" class="hidden">
+            <label class="block text-xs font-semibold text-stone-600 mb-1">ที่อยู่จัดส่งเดลิเวอรี่ *</label>
+            <textarea id="orderAddress" rows="2" placeholder="ระบุบ้านเลขที่, ซอย, ถนน, จุดสังเกต..."
+              class="w-full px-3 py-2 rounded-xl border border-stone-200 text-xs focus:border-rose-400 focus:outline-none"></textarea>
+          </div>
+
+          <!-- Customer Name & Phone -->
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div>
+              <label class="block font-semibold text-stone-600 mb-1">ชื่อลูกค้า *</label>
+              <input type="text" id="orderCustomerName" placeholder="เช่น คุณแนน"
+                class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none">
+            </div>
+            <div>
+              <label class="block font-semibold text-stone-600 mb-1">เบอร์โทรศัพท์</label>
+              <input type="tel" id="orderCustomerPhone" placeholder="08x-xxx-xxxx"
+                class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none">
+            </div>
+          </div>
+
+          <!-- Payment Method -->
+          <div>
+            <label class="block text-xs font-semibold text-stone-600 mb-1">ช่องทางชำระเงิน</label>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <label
+                class="flex items-center gap-2 p-2 rounded-xl border border-stone-200 cursor-pointer has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50">
+                <input type="radio" name="payment_method" value="promptpay" checked class="text-rose-500">
+                <span>📲 พร้อมเพย์ QR</span>
+              </label>
+              <label
+                class="flex items-center gap-2 p-2 rounded-xl border border-stone-200 cursor-pointer has-[:checked]:border-rose-400 has-[:checked]:bg-pink-50">
+                <input type="radio" name="payment_method" value="cash" class="text-rose-500">
+                <span>💵 เงินสด</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Subtotal & Submit -->
+          <div class="pt-2 border-t border-stone-100">
+            <div class="flex items-center justify-between text-base font-bold text-stone-800 mb-3">
+              <span>ยอดรวมทั้งสิ้น:</span>
+              <span id="cartDrawerTotalPrice" class="text-rose-600 text-xl font-bold">฿0</span>
+            </div>
+
+            <button onclick="submitOrder()" id="btnSubmitOrder"
+              class="w-full btn-pastel-primary py-3.5 text-base font-bold tracking-wide">
+              <span>ยืนยันการสั่งอาหาร ✨</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: ORDER CONFIRMED & PROMPTPAY QR ================= -->
+  <div id="orderSuccessModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div class="modal-backdrop fixed inset-0"></div>
+    <div class="modal-content relative z-10 w-full max-w-md p-6 text-center">
+
+      <div
+        class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 text-3xl flex items-center justify-center mx-auto mb-3 cute-bounce">
+        ✓
+      </div>
+
+      <h3 class="text-xl font-bold font-cute text-stone-800">สั่งอาหารสำเร็จแล้ว! 🌸</h3>
+      <p class="text-xs text-stone-500 mt-1">ห้องครัวได้รับออเดอร์และกำลังเริ่มเตรียมความอร่อยให้คุณ</p>
+
+      <div class="my-4 p-4 rounded-2xl bg-pink-50/70 border border-pink-100 text-left text-xs space-y-1.5">
+        <div class="flex justify-between">
+          <span class="text-stone-500">เลขที่คำสั่งซื้อ:</span>
+          <span class="font-bold text-rose-600" id="successOrderNumber"></span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-500">ชื่อลูกค้า:</span>
+          <span class="font-semibold text-stone-700" id="successCustomerName"></span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-500">ยอดชำระ:</span>
+          <span class="font-bold text-stone-800 text-sm" id="successTotalAmount"></span>
+        </div>
+      </div>
+
+      <!-- PromptPay QR Frame -->
+      <div id="promptpaySection"
+        class="p-4 bg-white rounded-2xl border-2 border-dashed border-pink-200 mb-4 inline-block">
+        <div class="text-xs font-bold text-blue-900 mb-2 flex items-center justify-center gap-1.5">
+          <span>📲</span> PromptPay สแกนจ่าย
+        </div>
+        <!-- Real Bank PromptPay QR -->
+        <div
+          class="w-44 h-44 mx-auto bg-stone-50 border border-stone-200 rounded-xl p-2 flex flex-col items-center justify-center relative shadow-inner">
+          <img id="promptpayQrImg"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020101021129370016A000000677010111011300668428418085802TH5303764630425C2"
+            alt="PromptPay QR Code" class="w-36 h-36 object-contain">
+          <span class="text-[10px] text-stone-400 mt-1">ร้านข้าวขาหมูหวานละมุน</span>
+        </div>
+        <p class="text-[11px] text-stone-500 mt-2">พร้อมเพย์: <b>084-284-1808</b></p>
+      </div>
+
+      <div class="space-y-2">
+        <button onclick="trackThisOrder()" class="w-full btn-pastel-primary py-2.5 text-xs font-bold">
+          <i class="fa-solid fa-map-location-dot"></i> ติดตามสถานะออเดอร์นี้
+        </button>
+        <button onclick="closeSuccessModal()" class="w-full btn-pastel-secondary py-2 text-xs">
+          กลับสู่หน้าหลัก
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= MODAL: LIVE ORDER TRACKER ================= -->
+  <div id="trackerModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div class="modal-backdrop fixed inset-0" onclick="closeTrackerModal()"></div>
+    <div class="modal-content relative z-10 w-full max-w-lg p-6">
+      <button onclick="closeTrackerModal()"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-600">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center mb-5">
+        <span class="text-3xl">🛵</span>
+        <h3 class="text-xl font-bold font-cute text-stone-800">ติดตามสถานะอาหาร</h3>
+        <p class="text-xs text-stone-500">กรอกเลขที่ออเดอร์เพื่อดูว่าขาหมูของคุณถึงขั้นตอนไหนแล้ว</p>
+      </div>
+
+      <!-- Search Input -->
+      <div class="flex gap-2 mb-5">
+        <input type="text" id="trackerInput" placeholder="เช่น KM-20261121-001"
+          class="flex-1 px-4 py-2.5 rounded-xl border border-pink-200 text-sm focus:border-rose-400 focus:outline-none">
+        <button onclick="searchOrderStatus()" class="btn-pastel-primary px-5 text-xs font-bold">
+          ตรวจสอบ
+        </button>
+      </div>
+
+      <!-- Tracker Status Display -->
+      <div id="trackerResult" class="hidden">
+        <!-- Render from JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: ADD REVIEW ================= -->
+  <div id="reviewModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div class="modal-backdrop fixed inset-0" onclick="closeReviewModal()"></div>
+    <div class="modal-content relative z-10 w-full max-w-md p-6">
+      <button onclick="closeReviewModal()"
+        class="absolute top-4 right-4 w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center text-stone-600">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center mb-4">
+        <span class="text-3xl">💖</span>
+        <h3 class="text-lg font-bold font-cute text-stone-800">รีวิวความประทับใจ</h3>
+        <p class="text-xs text-stone-500">บอกเล่าความอร่อยเพื่อให้ร้านพัฒนาให้ดียิ่งขึ้น</p>
+      </div>
+
+      <form onsubmit="submitReview(event)" class="space-y-3.5 text-xs">
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1">ชื่อของคุณ</label>
+          <input type="text" id="reviewName" required placeholder="เช่น น้องฟ้า สายหวาน"
+            class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1">ให้คะแนนความฟิน</label>
+          <div class="flex gap-2 text-2xl text-amber-400 justify-center py-1" id="starRatingGroup">
+            <i class="fa-solid fa-star cursor-pointer hover:scale-110 transition" data-val="1"
+              onclick="setStarRating(1)"></i>
+            <i class="fa-solid fa-star cursor-pointer hover:scale-110 transition" data-val="2"
+              onclick="setStarRating(2)"></i>
+            <i class="fa-solid fa-star cursor-pointer hover:scale-110 transition" data-val="3"
+              onclick="setStarRating(3)"></i>
+            <i class="fa-solid fa-star cursor-pointer hover:scale-110 transition" data-val="4"
+              onclick="setStarRating(4)"></i>
+            <i class="fa-solid fa-star cursor-pointer hover:scale-110 transition" data-val="5"
+              onclick="setStarRating(5)"></i>
+          </div>
+          <input type="hidden" id="reviewRating" value="5">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-stone-700 mb-1">ความเห็นและความรู้สึก</label>
+          <textarea id="reviewComment" rows="3" required placeholder="เช่น ขาหมูนุ่มมาก ไข่ยางมะตูมเยิ้มสะใจ..."
+            class="w-full px-3 py-2 rounded-xl border border-stone-200 focus:border-rose-400 focus:outline-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full btn-pastel-primary py-2.5 text-xs font-bold">
+          ส่งความคิดเห็น ✨
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+  <script>
+      (function () {
+        const PROMPTPAY_ID = '0842841808';
+
+        function crc16(data) {
+          let crc = 0xFFFF;
+          for (let i = 0; i < data.length; i++) {
+            crc ^= data.charCodeAt(i) << 8;
+            for (let j = 0; j < 8; j++) {
+              crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) : (crc << 1);
+              crc &= 0xFFFF;
+            }
+          }
+          return crc.toString(16).toUpperCase().padStart(4, '0');
+        }
+
+        function generatePromptPayPayload(phone, amount) {
+          const sanitized = phone.replace(/[^0-9]/g, '');
+          const formattedPhone = sanitized.startsWith('0')
+            ? '0066' + sanitized.slice(1)
+            : sanitized;
+
+          const merchantInfo =
+            '0016A000000677010111' +
+            '01' + String(formattedPhone.length).padStart(2, '0') + formattedPhone;
+
+          const numericAmount = parseFloat(String(amount).replace(/[^0-9.]/g, ''));
+          const hasAmount = !isNaN(numericAmount) && numericAmount > 0;
+          const pointOfInitiation = hasAmount ? '010212' : '010211';
+
+          let amountTag = '';
+          if (hasAmount) {
+            const amtStr = numericAmount.toFixed(2);
+            amountTag = '54' + String(amtStr.length).padStart(2, '0') + amtStr;
+          }
+
+          const rawPayload =
+            '000201' +
+            pointOfInitiation +
+            '29' + String(merchantInfo.length).padStart(2, '0') + merchantInfo +
+            '5802TH' +
+            '5303764' +
+            amountTag +
+            '6304';
+
+          return rawPayload + crc16(rawPayload);
+        }
+
+        function updatePromptPayQR() {
+          const qrImg = document.getElementById('promptpayQrImg');
+          const amountEl = document.getElementById('successTotalAmount');
+          if (!qrImg) return;
+
+          const amountText = amountEl ? amountEl.textContent : '';
+          const payload = generatePromptPayPayload(PROMPTPAY_ID, amountText);
+          const newSrc = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(payload)}`;
+          if (qrImg.src !== newSrc) {
+            qrImg.src = newSrc;
+          }
+        }
+
+        const amountTarget = document.getElementById('successTotalAmount');
+        if (amountTarget) {
+          const observer = new MutationObserver(updatePromptPayQR);
+          observer.observe(amountTarget, { childList: true, characterData: true, subtree: true });
+        }
+        updatePromptPayQR();
+      })();
+  </script>
+</body>
+
+</html>

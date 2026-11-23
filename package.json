@@ -1,0 +1,19 @@
+{
+  "name": "khamoo-pastel-shop",
+  "version": "1.0.0",
+  "description": "ร้านข้าวขาหมูพาสเทล หวานละมุน - Pastel Stewed Pork Leg Web Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "khamoo",
+    "pastel",
+    "restaurant",
+    "pos",
+    "sqlite"
+  ],
+  "author": "Khamoo Pastel Team",
+  "license": "MIT"
+}
